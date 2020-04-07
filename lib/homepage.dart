@@ -28,7 +28,11 @@ class Todo extends State<Myhomepage> {
               actions: <Widget>[
                 FlatButton(
                     child: Text('update'),
-                    onPressed: () =>_pushAddTodoScreen(),
+                    onPressed: () {
+                      _pushAddTodoScreen();
+                      _removeTodoItem((index));
+
+                    }
                 ),
                 FlatButton(
                     child:  Text('Delete'),
@@ -63,29 +67,47 @@ class Todo extends State<Myhomepage> {
       },
     );
   }
-
+  BoxDecoration myBoxDecoration() {
+    return BoxDecoration(
+      color: Colors.orange,
+      border: Border.all(
+          width: 3.0,
+        color: Colors.red,
+      ),
+      borderRadius: BorderRadius.all(
+          Radius.circular(25.0),
+      ),
+    );
+  }
 // Build a single todo item
   Widget _buildTodoItem(String todoText, int index) {
-    String s="\n----------------------------------------------------------------------------------------------------------------------------------------------------";
+    String s="\n";
     var now = new DateTime.now();
     var formatter = new DateFormat('dd-MM-yyyy');
     String formattedTime = DateFormat('kk:mm:a').format(now);
     String formattedDate = formatter.format(now);
+    todoText="=> "+todoText+s+s+s+formattedTime+s+formattedDate;
+    return Container(
+        margin: const EdgeInsets.all(20.0),
+      decoration: myBoxDecoration(),
 
-    todoText="=> "+todoText+"\n"+formattedTime+"\n"+formattedDate+s;
-    return ListTile(
-
-        title:  Text(todoText),
-
-        onTap: () => _promptRemoveTodoItem(index)
+      child: Card(
+          child: ListTile(
+    title:  Text(todoText ),
+    onTap: () => _promptRemoveTodoItem(index)
+      ),
+    ),
     );
+
   }
 
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
+      backgroundColor: Colors.black,
       appBar: AppBar(
         title: Text("VINAYAK'S TO-DO LIST "),
+
       ),
       body: _buildTodoList(),
       floatingActionButton:  FloatingActionButton(
@@ -108,7 +130,6 @@ class Todo extends State<Myhomepage> {
                       title:  Text('Add a new task')
                   ),
                   body:  TextField(
-                    autofocus: false,
                     onSubmitted: (val) {
                       _addTodoItem(val);
                       Navigator.pop(context); // Close the add todo screen
