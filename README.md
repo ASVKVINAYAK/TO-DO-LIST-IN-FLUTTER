@@ -9,6 +9,7 @@ I have added a switch from which user can get the status of the task ie it is pe
 
 ![](https://github.com/ASVKVINAYAK/TO-DO-LIST-IN-FLUTTER/blob/master/images/6.jpg)
 ![](https://github.com/ASVKVINAYAK/TO-DO-LIST-IN-FLUTTER/blob/master/images/7.jpg)
+
 ![](https://github.com/ASVKVINAYAK/TO-DO-LIST-IN-FLUTTER/blob/master/images/3.jpg)
 ![](https://github.com/ASVKVINAYAK/TO-DO-LIST-IN-FLUTTER/blob/master/images/4.jpg)
 ![](https://github.com/ASVKVINAYAK/TO-DO-LIST-IN-FLUTTER/blob/master/images/5.jpg)
