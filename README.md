@@ -1,6 +1,4 @@
 # vinayaktodolist
-
-This project is a starting point for a Flutter application.
 I have made a switch for which user can get status of the app i.e the task is pending or not.
 
 SOME PICS OF THE APP
