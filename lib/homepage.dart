@@ -3,17 +3,14 @@ import 'package:intl/intl.dart';
 class Myhomepage extends StatefulWidget {
   @override
   createState() => Todo();
+
 }
 
 class Todo extends State<Myhomepage> {
   List<String> _todoItems = [];
+  bool isSwitched = true;
   void _addTodoItem(String task) {
-    // Only add the task if the user actually entered something
-    if (task.length > 0) {
-      // Putting our code inside "setState" tells the app that our state has changed, and
-      // it will automatically re-render the list
       setState(() => _todoItems.add(task));
-    }
   }
   void _removeTodoItem(int index) {
     setState(() => _todoItems.removeAt(index));
@@ -75,7 +72,7 @@ class Todo extends State<Myhomepage> {
         color: Colors.red,
       ),
       borderRadius: BorderRadius.all(
-          Radius.circular(25.0),
+          Radius.circular(27.0),
       ),
     );
   }
@@ -88,13 +85,37 @@ class Todo extends State<Myhomepage> {
     String formattedDate = formatter.format(now);
     todoText="=> "+todoText+s+s+s+formattedTime+s+formattedDate;
     return Container(
-        margin: const EdgeInsets.all(20.0),
+        margin: const EdgeInsets.all(18.0),
       decoration: myBoxDecoration(),
-
       child: Card(
+
           child: ListTile(
+
     title:  Text(todoText ),
-    onTap: () => _promptRemoveTodoItem(index)
+              selected: false,
+              trailing: Column(
+
+                  children: <Widget>[
+
+                     Switch(
+                      value: isSwitched,
+
+                      onChanged: (value) {
+                      onTap: () {
+                        setState(() {
+                          isSwitched = value;
+                        });
+                      };
+                      },
+                      activeTrackColor: Colors.lightGreenAccent,
+                      activeColor: Colors.green,
+
+                    ),
+
+                  ],
+              ),
+
+              onTap: () => _promptRemoveTodoItem(index)
       ),
     ),
     );
